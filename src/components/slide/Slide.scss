@@ -1,0 +1,14 @@
+.slide {
+  width: 80%; 
+  margin: 0 auto;
+
+  .slide-item {
+    text-align: center;
+
+    img {
+      width: 100%; 
+      height: auto;
+      border-radius: 8px; 
+    }
+  }
+}

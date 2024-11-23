@@ -1,0 +1,101 @@
+.footer {
+  display: flex;
+  flex-direction: column;  /* Keeps footer content stacked vertically */
+  justify-content: center;
+  color: #666;
+  margin: 50px 0px;
+  padding: 0 20px;  /* Adds padding to the left and right of the footer for spacing */
+
+  img {
+    width: 24px;
+    height: 24px;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 1400px;  /* Set a max width to prevent the content from stretching too wide */
+    margin: 0 auto;  /* Centers the container horizontally */
+
+    .top {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px; /* Adds a gap between the items in the top section */
+
+      .item {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        
+        h2 {
+          font-size: 16px;
+          color: #555;
+        }
+
+        span {
+          font-weight: 300;
+        }
+      }
+    }
+
+    hr {
+      margin: 50px 0px;
+      height: 0;
+      border: 1px solid #ebe9e9;
+    }
+
+    .bottom {
+      display: flex; /* Aligns the bottom section horizontally */
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap; /* Allows wrapping if necessary */
+      gap: 20px; /* Adds space between the left and right sections */
+      
+      .left {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+
+        span {
+          font-size: 13px;
+          white-space: nowrap;
+        }
+      }
+
+      .right {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+
+        .social {
+          display: flex;
+          gap: 20px;
+        }
+
+        .link {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+        }
+      }
+    }
+  }
+
+  /* Styling for the logo link part */
+  .brand-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #000;
+    font-size: 25px;
+    font-weight: bold;
+    font-family: 'Arial', sans-serif;
+
+    &:hover {
+      color: #f45fe2; /* Custom hover color */
+    }
+
+    .brand-text {
+      margin-left: 8px;
+    }
+  }
+}

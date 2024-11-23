@@ -1,0 +1,238 @@
+.home {
+  .features {
+    background-color: #f1fdf7;
+    display: flex;
+    justify-content: center;
+    padding: 100px 0px;
+
+    &.dark {
+      background-color: #0d084d;
+
+      h1 {
+        color: white !important;
+      }
+
+      i {
+        font-weight: 300;
+      }
+
+      p {
+        margin-bottom: 20px;
+        color: white !important;
+      }
+
+      .title {
+        color: white !important;
+        font-weight: 300 !important;
+        font-size: 14px !important;
+      }
+
+      button {
+        background-color: #f45fe2;
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        width: max-content;
+        font-size: 16px;
+        cursor: pointer;
+        margin-top: 20px;
+      }
+    }
+
+    .container {
+      width: 1400px;
+      display: flex;
+      align-items: center;
+      gap: 200px;
+      flex-wrap: wrap;
+
+      .item {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        flex: 1;
+        min-width: 300px; /* Ensures it does not shrink too much on smaller screens */
+        
+        img {
+          width: 100%;
+        }
+        
+        h1 {
+          font-weight: 500;
+          margin-bottom: 10px;
+        }
+
+        .title {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          font-weight: 500;
+          font-size: 18px;
+          color: #666;
+          
+          img {
+            width: 24px;
+            height: 24px;
+          }
+        }
+        
+        p {
+          font-size: 18px;
+          font-weight: 300;
+          color: gray;
+          line-height: 28px;
+          letter-spacing: 1px;
+        }
+
+        video {
+          width: 100%; /* Makes the video responsive */
+        }
+      }
+    }
+
+    &.reverse {
+      background-color: #0d084d;
+      color: white;
+
+      .container {
+        flex-direction: row-reverse;
+      }
+    }
+  }
+
+  .explore {
+    display: flex;
+    justify-content: center;
+    padding: 100px 0px;
+
+    .container {
+      width: 1400px;
+
+      h1 {
+        color: #555;
+      }
+
+      .items {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+
+        .item {
+          width: 250px;
+          height: 150px;
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          cursor: pointer;
+          margin-bottom: 20px; /* Adds spacing between items on smaller screens */
+
+          img {
+            width: 50px;
+            height: 50px;
+          }
+
+          .line {
+            width: 50px;
+            height: 2px;
+            background-color: lightgray;
+            transition: all .3s ease;
+          }
+
+          span {
+            font-weight: 300;
+          }
+
+          &:hover {
+            .line {
+              width: 80px;
+              background-color: #761078;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/* Mobile Responsiveness */
+@media only screen and (max-width: 768px) {
+  .home {
+    .features {
+      padding: 50px 10px; /* Reduced padding for mobile */
+      .container {
+        flex-direction: column; /* Stacks the items on top of each other */
+        gap: 50px; /* Adds space between the items */
+      }
+      
+      .item {
+        min-width: 100%; /* Takes full width for mobile screens */
+        text-align: center;
+      }
+
+      video {
+        width: 100%; /* Makes video take full width on mobile */
+      }
+
+      button {
+        padding: 10px 15px;
+        font-size: 14px; /* Smaller button text */
+      }
+    }
+
+    .explore {
+      .container {
+        width: 100%; /* Full width for small screens */
+      }
+
+      .items {
+        flex-direction: column; /* Stacks the items vertically */
+      }
+
+      .item {
+        width: 100%; /* Makes items take full width */
+        height: auto; /* Adjusts height automatically */
+        margin-bottom: 15px; /* Adds bottom margin for spacing */
+      }
+
+      .line {
+        width: 80px;
+        background-color: #761078;
+      }
+    }
+  }
+}
+
+/* Tablet Responsiveness */
+@media only screen and (max-width: 1024px) {
+  .home {
+    .features {
+      .container {
+        flex-direction: column; /* Stack on tablet as well */
+        gap: 30px;
+      }
+
+      .item {
+        min-width: 100%; /* Full width for tablet */
+      }
+
+      video {
+        width: 100%; /* Responsive video on tablet */
+      }
+    }
+
+    .explore {
+      .items {
+        justify-content: space-evenly;
+      }
+
+      .item {
+        width: 45%; /* Adjusts item size for medium screens */
+      }
+    }
+  }
+}

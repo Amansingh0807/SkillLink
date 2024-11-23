@@ -1,0 +1,47 @@
+
+.community-page {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+}
+
+.welcome-section {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.welcome-section h1 {
+    background-color: #f45fe2; 
+    color: white; 
+    padding: 10px 20px;
+    border-radius: 8px; 
+    font-size: 2rem; 
+}
+
+.welcome-section p {
+    color: #333;
+    margin-top: 10px;
+}
+
+
+@media (max-width: 768px) {
+    .welcome-section h1 {
+        font-size: 1.5rem; 
+        padding: 8px 15px;
+    }
+
+    .welcome-section p {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .welcome-section h1 {
+        font-size: 1.2rem; 
+        padding: 6px 10px;
+    }
+
+    .welcome-section p {
+        font-size: 0.8rem;
+    }
+}
