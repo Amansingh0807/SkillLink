@@ -45,6 +45,8 @@ const CommunityTab = () => {
       ],
     },
   ]);
+
+
   const [newQuestion, setNewQuestion] = useState("");
 
   const addQuestion = () => {
@@ -83,6 +85,19 @@ const CommunityTab = () => {
   };
 
   const updateVotes = (questionId, answerId, type) => {
+    const voteKey = `${questionId}-${answerId}`;
+    const votedAnswers = JSON.parse(localStorage.getItem("votedAnswers")) || {};
+
+    if (votedAnswers[voteKey]) {
+      alert("You have already voted on this answer!");
+      return;
+    }
+
+    // Mark as voted
+    votedAnswers[voteKey] = true;
+    localStorage.setItem("votedAnswers", JSON.stringify(votedAnswers));
+
+    // Update votes
     setQuestions(
       questions.map((q) =>
         q.id === questionId
@@ -93,8 +108,7 @@ const CommunityTab = () => {
                   ? {
                       ...a,
                       upvotes: type === "upvote" ? a.upvotes + 1 : a.upvotes,
-                      downvotes:
-                        type === "downvote" ? a.downvotes + 1 : a.downvotes,
+                      downvotes: type === "downvote" ? a.downvotes + 1 : a.downvotes,
                     }
                   : a
               ),
@@ -129,7 +143,7 @@ const CommunityTab = () => {
       <div className="main-content">
         <h1 className="header">Ask your Queries</h1>
 
-        {/* Add Question */}
+
         <div className="question-box">
           <input
             type="text"
@@ -140,7 +154,7 @@ const CommunityTab = () => {
           <button onClick={addQuestion}>Post</button>
         </div>
 
-        {/* Display Questions */}
+  
         {questions.map((q) => (
           <div key={q.id} className="question-card">
             <h3>{q.question}</h3>
