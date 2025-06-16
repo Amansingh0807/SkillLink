@@ -3,10 +3,9 @@ import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import React from "react";
 import Navbar from "./components/navbar/Navbar";
 import Footer from "./components/footer/Footer";
-import Community from "./pages/community/community";
+import Community from "./pages/community/Community";
 import Home from "./pages/home/Home";
 import Gigs from "./pages/gigs/Gigs";
-import Gig from "./pages/gig/Gig";
 import Login from "./pages/login/Login";
 import Register from "./pages/register/Register";
 import Add from "./pages/add/Add";
@@ -18,7 +17,6 @@ import {
   QueryClient,
   QueryClientProvider,
 } from "@tanstack/react-query";
-import Pay from "./pages/pay/Pay";
 import Success from "./pages/success/Success";
 
 function App() {
@@ -75,20 +73,12 @@ function App() {
           element: <Add />,
         },
         {
-          path: "/gig/:id",
-          element: <Gig />,
-        },
-        {
           path: "/register",
           element: <Register />,
         },
         {
           path: "/login",
           element: <Login />,
-        },
-        {
-          path: "/pay/:id",
-          element: <Pay />,
         },
         {
           path: "/success",

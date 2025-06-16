@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState } from "react";
 import "./CommunityTab.scss";
 
@@ -82,6 +83,110 @@ const CommunityTab = () => {
           : q
       )
     );
+=======
+import React, { useEffect, useState } from "react";
+import "./CommunityTab.scss";
+import axios from "axios";
+
+const CommunityTab = () => {
+  const [newQuestion, setNewQuestion] = useState("");
+
+  const [questions, setQuestions] = useState([]);
+
+  async function getPost() {
+    try {
+      const response = await axios.get("https://skilllink.onrender.com/api/v1/user/post/all-posts", {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        withCredentials: true,
+      });
+
+      const posts = response.data.post;
+
+
+      const formattedQuestions = posts.map((post) => ({
+        id: post.id.toString(),
+        question: post.desc,
+        answers: (post.comment || []).map((comment) => ({
+          id: `${post.id}`,
+          text: comment.desc,
+          upvotes: 0,
+          downvotes: 0,
+        })),
+      }));
+
+      setQuestions(formattedQuestions);
+    } catch (error) {
+      console.error("Error fetching posts:", error);
+    }
+  }
+
+
+  const addQuestion = async () => {
+    if (newQuestion.trim()) {
+      try {
+        const response = await axios.post(
+          "https://skilllink.onrender.com/api/v1/user/post/add",
+          { desc: newQuestion },
+          {
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            withCredentials: true,
+          }
+        );
+
+        const newQuestionData = {
+          id: response.data.id.toString(),
+          question: response.data.desc,
+          answers: [],
+        };
+        setQuestions([...questions, newQuestionData]);
+        setNewQuestion("");
+      } catch (error) {
+        console.error("Error adding question:", error);
+      }
+    }
+  };
+
+  const addAnswer = async (postId, answer) => {
+    try {
+      const response = await axios.post(
+        `https://skilllink.onrender.com/api/v1/user/post/addcomment`,
+        {
+          desc: answer,
+          postId: Number(postId),
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          withCredentials: true,
+        }
+      );
+
+      const newAnswer = {
+        id: response.data.id.toString(),
+        text: response.data.desc,
+        upvotes: 0,
+        downvotes: 0,
+      };
+
+      setQuestions(
+        questions.map((q) =>
+          q.id === postId
+            ? {
+              ...q,
+              answers: [...q.answers, newAnswer],
+            }
+            : q
+        )
+      );
+    } catch (error) {
+      console.error("Error adding answer:", error);
+    }
+>>>>>>> 2bc3847 (additions)
   };
 
   const updateVotes = (questionId, answerId, type) => {
@@ -102,6 +207,7 @@ const CommunityTab = () => {
       questions.map((q) =>
         q.id === questionId
           ? {
+<<<<<<< HEAD
               ...q,
               answers: q.answers.map((a) =>
                 a.id === answerId
@@ -113,6 +219,19 @@ const CommunityTab = () => {
                   : a
               ),
             }
+=======
+            ...q,
+            answers: q.answers.map((a) =>
+              a.id === answerId
+                ? {
+                  ...a,
+                  upvotes: type === "upvote" ? a.upvotes + 1 : a.upvotes,
+                  downvotes: type === "downvote" ? a.downvotes + 1 : a.downvotes,
+                }
+                : a
+            ),
+          }
+>>>>>>> 2bc3847 (additions)
           : q
       )
     );
@@ -123,7 +242,16 @@ const CommunityTab = () => {
     alert("Answer copied to clipboard for sharing!");
   };
 
+<<<<<<< HEAD
   return (
+=======
+  useEffect(() => {
+    getPost();
+  }, []);
+
+  return (
+
+>>>>>>> 2bc3847 (additions)
     <div className="community-tab">
       <div className="side-bar left">
         <ul>
@@ -154,7 +282,11 @@ const CommunityTab = () => {
           <button onClick={addQuestion}>Post</button>
         </div>
 
+<<<<<<< HEAD
   
+=======
+
+>>>>>>> 2bc3847 (additions)
         {questions.map((q) => (
           <div key={q.id} className="question-card">
             <h3>{q.question}</h3>
@@ -183,15 +315,24 @@ const CommunityTab = () => {
   );
 };
 
+<<<<<<< HEAD
 const AnswerList = ({ questionId, answers, addAnswer, updateVotes, shareAnswer }) => {
+=======
+const AnswerList = ({ questionId, answers = [], addAnswer, updateVotes, shareAnswer }) => {
+>>>>>>> 2bc3847 (additions)
   const [newAnswer, setNewAnswer] = useState("");
   const [showAllAnswers, setShowAllAnswers] = useState(false);
 
   const submitAnswer = () => {
+<<<<<<< HEAD
     if (newAnswer.trim()) {
       addAnswer(questionId, newAnswer);
       setNewAnswer("");
     }
+=======
+    addAnswer(questionId, newAnswer);
+    setNewAnswer("");
+>>>>>>> 2bc3847 (additions)
   };
 
   const toggleAnswers = () => {
@@ -202,7 +343,10 @@ const AnswerList = ({ questionId, answers, addAnswer, updateVotes, shareAnswer }
 
   return (
     <div>
+<<<<<<< HEAD
       {/* Add Answer */}
+=======
+>>>>>>> 2bc3847 (additions)
       <div className="answer-box">
         <input
           type="text"
@@ -213,7 +357,10 @@ const AnswerList = ({ questionId, answers, addAnswer, updateVotes, shareAnswer }
         <button onClick={submitAnswer}>Submit</button>
       </div>
 
+<<<<<<< HEAD
       {/* List Answers */}
+=======
+>>>>>>> 2bc3847 (additions)
       <div className="answers">
         {displayedAnswers.map((a) => (
           <div key={a.id} className="answer-card">
@@ -240,4 +387,9 @@ const AnswerList = ({ questionId, answers, addAnswer, updateVotes, shareAnswer }
   );
 };
 
+<<<<<<< HEAD
 export default CommunityTab;
+=======
+
+export default CommunityTab;
+>>>>>>> 2bc3847 (additions)
