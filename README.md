@@ -1,4 +1,7 @@
 
+# NOTE : This app was firstly done with React now i am shifting the app from React to Next js also with new name "Velai" 
+
+
 # skillLink
 
 skillLink is a community-driven platform designed to empower freelancers by fostering a collaborative environment where they can discuss, share knowledge, offer peer support, and find job opportunities. With dedicated forums, collaboration tools, and job posting features, skillLink provides an all-in-one solution for freelancers looking to grow their network, improve skills, and access valuable resources.
